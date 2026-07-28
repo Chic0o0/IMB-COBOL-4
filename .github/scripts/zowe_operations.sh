@@ -3,15 +3,15 @@
 # Convert username to lowercase
 LOWERCASE_USERNAME=$(echo "$ZOWE_USERNAME" | tr '[:upper:]' '[:lower:]')
 # Check if directory exists, create if it doesn't
-if ! npx zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck" &>/dev/null; then
+if ! npx --package=@zowe/cli zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck" &>/dev/null; then
     echo "Directory does not exist. Creating it..."
-    npx zowe zos-files create uss-directory /z/$LOWERCASE_USERNAME/cobolcheck
+    npx --package=@zowe/cli zowe zos-files create uss-directory /z/$LOWERCASE_USERNAME/cobolcheck
 else
     echo "Directory already exists."
 fi
 # Upload files
-npx zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive
+npx --package=@zowe/cli zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive
         --binary-files "cobol-check-0.2.9.jar"
 # Verify upload
 echo "Verifying upload:"
-npx zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck"
+npx --package=@zowe/cli zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck"
