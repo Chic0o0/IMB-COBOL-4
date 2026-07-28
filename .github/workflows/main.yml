@@ -19,7 +19,7 @@ jobs:
           npx --package=@zowe/cli zowe profiles create zosmf-profile mi-perfil \
             --host "${{ secrets.ZOWE_HOST }}" \
             --port "${{ secrets.ZOWE_PORT }}" \
-            --user "${{ secrets.ZOWE_USER }}" \
+            --user "${{ secrets.ZOWE_USERNAME }}" \
             --password "${{ secrets.ZOWE_PASSWORD }}" \
             --overwrite
       - name: Run COBOL Check
