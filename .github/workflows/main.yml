@@ -14,16 +14,14 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: "11"
-      - name: Configurar Zowe sin prompts interactivos
+      - name: Zowe config
         run: |
-          # Reemplaza 'zosmf' por 'rse' si tu manual usa RSE API de IBM
-          zowe profiles create zosmf-profile mi-perfil \
+          npx --package=@zowe/cli zowe profiles create zosmf-profile mi-perfil \
             --host "${{ secrets.ZOWE_HOST }}" \
             --port "${{ secrets.ZOWE_PORT }}" \
             --user "${{ secrets.MAINFRAME_USER }}" \
             --password "${{ secrets.MAINFRAME_PASSWORD }}" \
             --overwrite
-
       - name: Run COBOL Check
         env:
           ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
