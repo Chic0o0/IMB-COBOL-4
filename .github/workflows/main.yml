@@ -19,8 +19,8 @@ jobs:
           npx --package=@zowe/cli zowe profiles create zosmf-profile mi-perfil \
             --host "${{ secrets.ZOWE_HOST }}" \
             --port "${{ secrets.ZOWE_PORT }}" \
-            --user "${{ secrets.MAINFRAME_USER }}" \
-            --password "${{ secrets.MAINFRAME_PASSWORD }}" \
+            --user "${{ secrets.ZOWE_USER }}" \
+            --password "${{ secrets.ZOWE_PASSWORD }}" \
             --overwrite
       - name: Run COBOL Check
         env:
